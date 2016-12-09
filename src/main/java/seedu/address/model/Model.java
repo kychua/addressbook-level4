@@ -1,10 +1,12 @@
 package seedu.address.model;
 
+import seedu.address.commons.core.ParserSettings;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 
+import java.util.HashMap;
 import java.util.Set;
 
 /**
@@ -13,6 +15,9 @@ import java.util.Set;
 public interface Model {
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyAddressBook newData);
+
+    /** Returns the parser settings */
+    HashMap<String, String> getCommandAliases();
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();

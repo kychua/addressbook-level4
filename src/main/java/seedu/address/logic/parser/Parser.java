@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import seedu.address.commons.core.ParserSettings;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.commands.*;
@@ -31,6 +32,12 @@ public class Parser {
     private static final Prefix addressPrefix = new Prefix("a/");
     private static final Prefix tagsPrefix = new Prefix("t/");
 
+    private final HashMap<String, String> commandAliases;
+
+    public Parser(HashMap<String, String> commandAliases) {
+        this.commandAliases = commandAliases;
+    }
+
     /**
      * Parses user input into command for execution.
      *
@@ -45,8 +52,10 @@ public class Parser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
-        switch (commandWord) {
 
+        final String standardizedCommandWord = getStandardizedForm(commandWord);
+
+        switch (standardizedCommandWord) {
         case AddCommand.COMMAND_WORD:
             return prepareAdd(arguments);
 
@@ -74,6 +83,14 @@ public class Parser {
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);
         }
+    }
+
+    private String getStandardizedForm(String command) {
+        String standardizedCommandWord = commandAliases.get(command);
+        if (standardizedCommandWord == null) {
+            return command;
+        }
+        return standardizedCommandWord;
     }
 
     /**

@@ -5,12 +5,14 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.commons.core.ParserSettings;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.UniquePersonList.PersonNotFoundException;
 
+import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -23,6 +25,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook addressBook;
     private final FilteredList<Person> filteredPersons;
+    private final UserPrefs userPrefs;
 
     /**
      * Initializes a ModelManager with the given AddressBook
@@ -37,6 +40,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         addressBook = new AddressBook(src);
         filteredPersons = new FilteredList<>(addressBook.getPersons());
+        this.userPrefs = userPrefs;
     }
 
     public ModelManager() {
@@ -46,6 +50,12 @@ public class ModelManager extends ComponentManager implements Model {
     public ModelManager(ReadOnlyAddressBook initialData, UserPrefs userPrefs) {
         addressBook = new AddressBook(initialData);
         filteredPersons = new FilteredList<>(addressBook.getPersons());
+        this.userPrefs = userPrefs;
+    }
+
+    @Override
+    public HashMap<String, String> getCommandAliases() {
+        return userPrefs.getCommandSettings().getCommandAliases();
     }
 
     @Override

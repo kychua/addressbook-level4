@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import seedu.address.commons.core.ParserSettings;
 import seedu.address.commons.core.GuiSettings;
 
 import java.util.Objects;
@@ -10,9 +11,14 @@ import java.util.Objects;
 public class UserPrefs {
 
     public GuiSettings guiSettings;
+    public ParserSettings parserSettings;
 
     public GuiSettings getGuiSettings() {
         return guiSettings == null ? new GuiSettings() : guiSettings;
+    }
+
+    public ParserSettings getCommandSettings() {
+        return parserSettings == null ? new ParserSettings() : parserSettings;
     }
 
     public void updateLastUsedGuiSetting(GuiSettings guiSettings) {
@@ -21,6 +27,7 @@ public class UserPrefs {
 
     public UserPrefs(){
         this.setGuiSettings(500, 500, 0, 0);
+        parserSettings = new ParserSettings();
     }
 
     public void setGuiSettings(double width, double height, int x, int y) {
@@ -38,7 +45,8 @@ public class UserPrefs {
 
         UserPrefs o = (UserPrefs) other;
 
-        return Objects.equals(guiSettings, o.guiSettings);
+        return Objects.equals(guiSettings, o.guiSettings)
+                & Objects.equals(parserSettings, o.parserSettings);
     }
 
     @Override
@@ -48,7 +56,7 @@ public class UserPrefs {
 
     @Override
     public String toString(){
-        return guiSettings.toString();
+        return guiSettings.toString() + parserSettings.toString();
     }
 
 }
