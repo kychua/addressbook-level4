@@ -2,6 +2,7 @@ package seedu.address.commons.core;
 
 import java.awt.*;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -10,43 +11,49 @@ import java.util.Objects;
  */
 public class ParserSettings implements Serializable {
 
-    private static final HashMap<String, String> DEFAULT_COMMAND_ALIASES;
-    private final HashMap<String, String> commandAliases;
+    private static final HashMap<String, String> DEFAULT_ALIAS_TO_COMMAND;
+    private static final KeyValuesPair[] COMMANDS_TO_ALIASES = {
+        new KeyValuesPair("add", new String[] {"a"}),
+        new KeyValuesPair("clear", new String[] {"c", "clr", "reset"}),
+        new KeyValuesPair("delete", new String[] {"d", "del", "remove"}),
+        new KeyValuesPair("exit", new String[] {"quit", "q"}),
+        new KeyValuesPair("find", new String[] {"f", "get", "search"}),
+        new KeyValuesPair("help", new String[] {"h", "sos"}),
+        new KeyValuesPair("list", new String[] {"l"}),
+        new KeyValuesPair("select", new String[] {"s", "sel", "show"})
+    };
+
+    private final HashMap<String, String> aliasToCommand;
 
     static {
-        // TODO: refactor to reduce repetition
-        DEFAULT_COMMAND_ALIASES = new HashMap<String, String>();
-        DEFAULT_COMMAND_ALIASES.put("a", "add");
-        DEFAULT_COMMAND_ALIASES.put("c", "clear");
-        DEFAULT_COMMAND_ALIASES.put("clr", "clear");
-        DEFAULT_COMMAND_ALIASES.put("reset", "clear");
-        DEFAULT_COMMAND_ALIASES.put("d", "delete");
-        DEFAULT_COMMAND_ALIASES.put("del", "delete");
-        DEFAULT_COMMAND_ALIASES.put("dlt", "delete");
-        DEFAULT_COMMAND_ALIASES.put("remove", "delete");
-        DEFAULT_COMMAND_ALIASES.put("e", "exit");
-        DEFAULT_COMMAND_ALIASES.put("q", "exit");
-        DEFAULT_COMMAND_ALIASES.put("quit", "exit");
-        DEFAULT_COMMAND_ALIASES.put("f", "find");
-        DEFAULT_COMMAND_ALIASES.put("get", "find");
-        DEFAULT_COMMAND_ALIASES.put("search", "find");
-        DEFAULT_COMMAND_ALIASES.put("h", "help");
-        DEFAULT_COMMAND_ALIASES.put("sos", "find");
-        DEFAULT_COMMAND_ALIASES.put("l", "list");
-        DEFAULT_COMMAND_ALIASES.put("s", "select");
-        DEFAULT_COMMAND_ALIASES.put("sel", "select");
+        DEFAULT_ALIAS_TO_COMMAND = new HashMap<String, String>();
+        addDefaultCommandAliases(DEFAULT_ALIAS_TO_COMMAND);
+        Collections.unmodifiableMap(DEFAULT_ALIAS_TO_COMMAND);
+    }
+
+    /**
+     * Adds default command aliases to {@code aliasToCommand}, used for setup of {@code DEFAULT_ALIAS_TO_COMMAND}.
+     */
+    private static void addDefaultCommandAliases(HashMap<String, String> aliasToCommand) {
+        for (KeyValuesPair commandToAliases : COMMANDS_TO_ALIASES) {
+            String command = commandToAliases.key;
+            String[] aliases = commandToAliases.values;
+            for (String alias : aliases) {
+                aliasToCommand.put(alias, command);
+            }
+        }
     }
 
     public ParserSettings() {
-        this.commandAliases = DEFAULT_COMMAND_ALIASES;
+        this.aliasToCommand = DEFAULT_ALIAS_TO_COMMAND;
     }
 
     public ParserSettings(HashMap<String, String> commandAliases) {
-        this.commandAliases = commandAliases;
+        this.aliasToCommand = commandAliases;
     }
 
     public HashMap<String, String> getCommandAliases() {
-        return commandAliases;
+        return aliasToCommand;
     }
 
     @Override
@@ -60,16 +67,28 @@ public class ParserSettings implements Serializable {
 
         ParserSettings o = (ParserSettings) other;
 
-        return Objects.equals(commandAliases, o.commandAliases);
+        return Objects.equals(aliasToCommand, o.aliasToCommand);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(commandAliases);
+        return Objects.hash(aliasToCommand);
     }
 
     @Override
     public String toString(){
-        return commandAliases.toString();
+        return aliasToCommand.toString();
+    }
+
+    /**
+     * Helper class that stores a key and an array of values.
+     */
+    static class KeyValuesPair {
+        public String[] values;
+        public String key;
+        public KeyValuesPair(String key, String[] values) {
+            this.key = key;
+            this.values = values;
+        }
     }
 }
