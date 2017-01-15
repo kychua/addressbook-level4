@@ -9,7 +9,7 @@ Doc Writer
 
 A simple http://asciidoc.org[AsciiDoc] document.
 
-== Quick Start 3
+== Quick Start 6
 . Ensure you have Java version +1.8.0_60+ or later installed in your computer.
 +
 [NOTE]
