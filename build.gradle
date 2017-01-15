@@ -5,10 +5,30 @@
  * user guide available at http://gradle.org/docs/2.2.1/userguide/tutorial_java_projects.html
  */
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.11'
+    }
+}
+
 plugins {
     id "com.github.kt3k.coveralls" version "2.4.0"
     id "com.github.johnrengelman.shadow" version '1.2.3'
     id 'application'
+    id 'org.asciidoctor.convert' version '1.5.3'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.asciidoctor.convert'
+
+asciidoctor {
+  backends 'html5', 'pdf'
+  sourceDir = file('docs')
+  outputDir = file('build/docs')
 }
 
 // Specifies the entry point of the application
