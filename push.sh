@@ -13,7 +13,7 @@ commit_website_files() {
 
 upload_files() {
   git remote add origin https://${GH_TOKEN}@github.com/kychua/addressbook-level4.git > /dev/null 2>&1
-  git push --quiet --set-upstream gh-pages gh-pages
+  git push --quiet --set-upstream origin gh-pages
 }
 
 setup_git
