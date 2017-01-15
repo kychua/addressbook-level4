@@ -1,11 +1,20 @@
 #!/bin/bash
 
+rev=$(git rev-parse --short HEAD)
+
 cd "$TRAVIS_BUILD_DIR"
 cd build/docs/html5
 
 git init
-git checkout -b gh-pages
-git add .
-git -c user.name='travis' -c user.email='travis' commit -m init
-git push --force --quiet "https://${GITHUB_API_KEY}@$github.com/kychua/addressbook-level4.git" master:gh-pages > /dev/null 2>&1
-cd $TRAVIS_BUILD_DIR
+git config user.name "Travis"
+git config user.email "Travis"
+
+git remote add upstream "https://${GITHUB_API_KEY}@github.com/kychua/addressbook-level4.git"
+git fetch upstream
+git reset upstream/gh-pages
+
+touch .
+
+git add -A .
+git commit -m "Rebuild pages at ${rev}"
+git push -q upstream HEAD:gh-pages
