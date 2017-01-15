@@ -14,11 +14,6 @@ before_install:
 after_success:
   - bash push.sh
 
-env:
-  global:
-    - secure: JBgnaB26NsSbY+D/fAyIn8fLVS+qSdNEqYAvOUUl4UKjLDjnXv8frSOnCyYBEIiWOlTgsRfX5dujefGivdPm6I+hMr2dQzFCXkTtXRKRs41/yf/A9OqKFNxFXWG08DERhMHSABe6qgPzl6+azQSAdssRTt1fm4oOol0D5fk+XTHv0QNP2HKK1zjrS9cuHB63rFBGLgdoBu60PlOErpDBfYIhCpr7tDg7eqo5H4iCx58QpHVAQknETcpRurbQUr+Yrvg5c+45enj8VasfzNllN0pxyu2sHPTUF7d2ZaHiH6e2xJohLYzOgnP0Cpsv7aalOkd8tGFT0+X121SxMH6CHHjBb3GqHZgv6uSTT9DmkhreT4XWPXs+M1J7Me3Oss+hKq/tQec7q6dlwkjSeb4UgIArQszpAnUcjxEAuVmpozk34Ol2GaIxTTecvbTHjBDOoutHcRQgu+8B/IrYS0i5A2IEVKbIDMKG9WCnmvbk2rNkTUlUDxtsM/4/Q6kwbZQoH9v3XWpX9paNYEXXdXQBTqdBgCPW+KswMHGcCB7FVggKOhsGdOr6ZioBtK42KK5SBrHs04+5J5FX/WRZEwQ3PxzyFMZJF/H6oIfy8v4akOR71FMnCSaoR8pu4QNDDfgrsjIC+h34GzEMQ64i/gfQRJDWAXO8jTgoLefxUHq9444=
-
-
 addons:
   apt:
     packages:
