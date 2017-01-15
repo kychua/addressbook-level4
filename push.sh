@@ -11,6 +11,7 @@ fi
 rev=$(git rev-parse --short HEAD)
 
 cd "$TRAVIS_BUILD_DIR"
+cp docs/index.html build/docs/html5
 cd build/docs/html5
 
 git init
