@@ -21,7 +21,7 @@ This app will not work with earlier versions of Java 8.
 . Double-click the file to start the app. The GUI should appear in a few seconds.
 +
 [[img-sunset]]
-image::images/Architecture.png[caption="Figure 1: ", title="A mountain sunset", alt="Sunset", width="300", height="200", link="images/Architecture.png"]
+image::images/Architecture.png[caption="Figure 1: ", title="A mountain sunset", width="300", height="200", link="images/Architecture.png"]
 . Type the command in the command box and press enter to execute it.
 . [red]#Obvious# and [big red yellow-background]*very obvious*.
 . [underline]#Underline text#, [overline]#overline text# and [blue line-through]*bold blue and line-through*.
