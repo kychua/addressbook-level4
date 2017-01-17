@@ -25,7 +25,8 @@ image::images/Architecture.png[caption="Figure 1: ", title="A mountain sunset", 
 . Type the command in the command box and press enter to execute it.
 . [red]#Obvious# and [big red yellow-background]*very obvious*.
 . [underline]#Underline text#, [overline]#overline text# and [blue line-through]*bold blue and line-through*.
-. +++<span style="color: #hexa_color_code">my text</span>+++.
+. +++ <font color="red">This is some text!</font> +++.
+
 
 == Test
 
