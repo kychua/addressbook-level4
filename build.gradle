@@ -5,9 +5,11 @@
  * user guide available at http://gradle.org/docs/2.2.1/userguide/tutorial_java_projects.html
  */
 
+
 plugins {
     id "com.github.kt3k.coveralls" version "2.4.0"
     id "com.github.johnrengelman.shadow" version '1.2.3'
+    id 'org.asciidoctor.convert' version '1.5.3'
     id 'application'
 }
 
@@ -89,6 +91,7 @@ allprojects {
 
         destinationDir = file("${buildDir}/jar/")
     }
+
 }
 
 task wrapper(type: Wrapper) {
@@ -171,4 +174,11 @@ nonGuiTests.mustRunAfter headless
 guiTests.mustRunAfter headless
 allTests.mustRunAfter headless
 
-defaultTasks 'clean', 'headless', 'allTests', 'coverage'
+asciidoctor {
+  backends 'html5'
+  sourceDir = file("docs")
+  outputDir = file("${buildDir}/docs")
+}
+
+
+defaultTasks 'clean', 'headless', 'allTests', 'coverage', 'asciidoctor'
