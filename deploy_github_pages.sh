@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
 # Pushes asciidoctor generated files to gh-pages branch.
- 
-set -e # exit with nonzero exit code if any line fails
+
+set -e # exit with nonzero exit code if any line fail
 
 GITHUB_REPO="kychua/addressbook-level4.git"
 commit_sha=$(git rev-parse --short HEAD)
