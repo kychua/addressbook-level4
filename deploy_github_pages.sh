@@ -17,6 +17,6 @@ git remote add upstream "https://${GITHUB_API_KEY}@github.com/${GITHUB_REPO}"
 git fetch upstream
 git reset upstream/gh-pages
 
-git add -A . # to prevent index.html from being deleted
+git add --ignore-removal . # to prevent index.html from being deleted
 git commit -m "Rebuild pages at ${commit_sha}"
 git push -q upstream HEAD:gh-pages
