@@ -19,6 +19,6 @@ git remote add upstream "https://${GITHUB_API_KEY}@github.com/${GITHUB_REPO}"
 git fetch upstream
 git reset upstream/gh-pages
 
-git add -A . 
+git add -A .
 git commit -m "Rebuild pages at ${commit_sha}"
 git push -q upstream HEAD:gh-pages
