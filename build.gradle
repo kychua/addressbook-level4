@@ -200,4 +200,10 @@ asciidoctor {
               'max-width': '50em'
 }
 
+task copyStylesheets(type: Copy) {
+    from "docs/stylesheets"
+    into "${buildDir}/docs/html5"
+}
+asciidoctor.dependsOn copyStylesheets
+
 defaultTasks 'clean', 'headless', 'allTests', 'coverage', 'asciidoctor'
