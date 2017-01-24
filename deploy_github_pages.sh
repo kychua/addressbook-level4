@@ -1,25 +1,12 @@
 #!/usr/bin/env bash
 #
 # Pushes asciidoctor generated files to gh-pages branch.
-
-echo "In build file"
-
-set -ev
-
-echo "Setting up"
+set -ev # exit with nonzero exit code if any line fails
 
 GITHUB_REPO="kychua/addressbook-level4.git"
 commit_sha=$(git rev-parse --short HEAD)
 
-echo "START"
-
-cd $TRAVIS_BUILD_DIR
-
-echo "In travis build dir"
-
 cd build/docs/html5
-
-echo "Start git"
 
 git init
 git config user.name "Travis"
