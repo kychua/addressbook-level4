@@ -2,8 +2,6 @@
 #
 # Pushes asciidoctor generated files to gh-pages branch.
 
-set -e # exit with nonzero exit code if any line fails
-
 GITHUB_REPO="kychua/addressbook-level4.git"
 commit_sha=$(git rev-parse --short HEAD)
 
@@ -20,5 +18,3 @@ git reset upstream/gh-pages
 git add -A .
 git commit -m "Rebuild pages at ${commit_sha}"
 git push -q upstream HEAD:gh-pages
-
-set +e
