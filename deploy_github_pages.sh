@@ -4,7 +4,7 @@
 
 set -e # exit with nonzero exit code if any line fails
 
-GITHUB_REPO="se-edu/addressbook-level4.git"
+GITHUB_REPO="kychua/addressbook-level4.git"
 commit_sha=$(git rev-parse --short HEAD)
 
 cd build/docs/html5
