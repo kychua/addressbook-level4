@@ -20,3 +20,5 @@ git reset upstream/gh-pages
 git add -A .
 git commit -m "Rebuild pages at ${commit_sha}"
 git push -q upstream HEAD:gh-pages
+
+set +e
