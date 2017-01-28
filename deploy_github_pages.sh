@@ -13,7 +13,7 @@ git init
 git config user.name "Travis"
 git config user.email "travis@travis-ci.org"
 
-git remote add upstream "https://${GITHUB_API_KEY}@github.com/${GITHUB_REPO}"
+git remote add upstream "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPO}"
 git fetch upstream
 git reset upstream/gh-pages
 
