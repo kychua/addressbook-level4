@@ -306,6 +306,20 @@ Here are the steps to create a new release.
  2. Tag the repo with the version number. e.g. `v0.1`
  2. [Create a new release using GitHub](https://help.github.com/articles/creating-releases/)
     and upload the JAR file you created.
+    
+### 5.4. Generating Documentation
+
+Documentation files are written in AsciiDoc format, then rendered as HTML files for viewing on the GitHub Pages site for this repo (`se-edu.github.io/addressbook-level4`). 
+
+#### Editing Documentation
+
+All editing of documentation should be done on the AsciiDoc files in `docs`. When changes are committed to the `master` branch (e.g. pushing commits to `master` or merging pull requests to `master`), Travis automatically converts the files to HTML format and pushes them to the `gh-pages` branch. These HTML files are then published on the GitHub Pages site by GitHub. There should be no manual editing of files in the `gh-pages` branch.
+
+You can style the generated HTML files using CSS stylesheets in `docs/stylesheets`. Remember to update the attributes in the header of the AsciiDoc files to the new stylesheets. To preview the HTML documentation locally, [use Gradle to render the files](UsingGradle.md#rendering-asciidoc-files). 
+
+#### Converting Documentation to PDF Format
+
+To get a copy of the documentation files in PDF format, go to `se-edu.github.io/addressbook-level4/Compiled.html` and use the browser's print to PDF function to obtain a PDF copy of the documentation.
 
 ### 5.4. Managing Dependencies
 
