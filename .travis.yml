@@ -12,7 +12,7 @@ before_install:
           - "sh -e /etc/init.d/xvfb start"
 
 after_success:
-  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy_github_pages.sh
+  - test "false" == "$TRAVIS_PULL_REQUEST" -a "master" == "$TRAVIS_BRANCH" && bash deploy_github_pages.sh
 
 addons:
   apt:
