@@ -4,10 +4,6 @@
 
 set -e # exit with nonzero exit code if any line fails
 
-./config/travis/run-checks.sh
-
-travis_retry ./gradlew clean checkstyleMain checkstyleTest headless allTests coverage coveralls asciidoctor -i
-
 if [ "true" = "$TRAVIS_PULL_REQUEST" || "master" != "$TRAVIS_BRANCH" ]; then
   echo "Not a commit to master branch. Not deploying to GitHub Pages." >&2
   exit 0
