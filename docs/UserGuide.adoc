@@ -1,0 +1,3 @@
+= User Guide
+
+// Temporarily empty, used for setup of asciidoc workflow (referred to by Compiled.adoc)
