@@ -20,9 +20,12 @@ git config user.name "Travis"
 git config user.email "travis@travis-ci.org"
 
 git remote add upstream "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPO}"
+
 # >/dev/null 2>&1 discards output to avoid leaking $GITHUB_TOKEN to Travis logs e.g. if error occurs
 git fetch upstream >/dev/null 2>&1
-git reset upstream/gh-pages
+
+# Create gh-pages branch if it doesn't exist
+git reset upstream/gh-pages || git checkout --orphan gh-pages
 
 git add -A .
 git commit -m "Rebuild pages at ${commit_sha}"
