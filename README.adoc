@@ -1,5 +1,7 @@
 = Address Book (Level 4)
-ifdef::env-github,env-browser[:outfilesuffix: .adoc, :relfileprefix: docs/, :imagesDir: docs/images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifdef::env-github,env-browser[:relfileprefix: docs/]
+ifdef::env-github,env-browser[:imagesDir: docs/images]
 ifndef::env-github,env-browser[:imagesDir: images]
 
 https://travis-ci.org/se-edu/addressbook-level4[image:https://travis-ci.org/se-edu/addressbook-level4.svg?branch=master[Build Status]]
