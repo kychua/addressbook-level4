@@ -10,7 +10,7 @@ if [[ "false" != "$TRAVIS_PULL_REQUEST" || "master" != "$TRAVIS_BRANCH" ]]; then
   exit 0
 fi
 
-GITHUB_REPO="se-edu/addressbook-level4.git"
+GITHUB_REPO="kychua/addressbook-level4.git"
 commit_sha=$(git rev-parse --short HEAD)
 
 cd build/docs/html5
