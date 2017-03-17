@@ -9,9 +9,9 @@ script: >-
     ./deploy_github_pages.sh
 
 before_install:
-          - "export DISPLAY=:99.0"
-          - "sh -e /etc/init.d/xvfb start"
-          - "chmod ugo+x deploy_github_pages.sh"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - "chmod ugo+x deploy_github_pages.sh"
 
 addons:
   apt:
