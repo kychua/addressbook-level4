@@ -16,7 +16,7 @@ git init
 git config user.name "Travis"
 git config user.email "travis@travis-ci.org"
 
-git remote add upstream "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+git remote add upstream "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}2.git"
 
 # Reset to gh-pages branch, or create orphan branch if gh-pages does not exist in remote.
 if git ls-remote --heads upstream gh-pages 2>/dev/null; then
@@ -24,7 +24,7 @@ if git ls-remote --heads upstream gh-pages 2>/dev/null; then
     git fetch --depth=1 upstream gh-pages 2>/dev/null
     git reset upstream/gh-pages 2>/dev/null
 else
-    git checkout --orphan gh-pages
+    git checkout --orphan gh-pages 2>/dev/null
 fi
 
 # Exit if there are no changes to gh-pages files.
