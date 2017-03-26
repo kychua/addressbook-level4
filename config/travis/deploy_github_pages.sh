@@ -6,7 +6,7 @@ set -o nounset # exit if variable is unset
 
 # Pull requests and commits to other branches should not try to deploy.
 if [ "false" != "$TRAVIS_PULL_REQUEST" -o "master" != "$TRAVIS_BRANCH" ]; then
-  echo "Not a commit to master branch. Skipping deploy to GitHub Pages." >&2
+  echo "Not a commit to master branch. Skipping deploy to GitHub Pages."
   exit 0
 fi
 
@@ -19,20 +19,20 @@ git config user.email "travis@travis-ci.org"
 git remote add upstream "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
 
 # Reset to gh-pages branch, or create orphan branch if gh-pages does not exist in remote.
-if git ls-remote --heads upstream gh-pages; then
+if git ls-remote --heads upstream gh-pages 2>/dev/null; then
     # >/dev/null 2>&1 discards output to avoid leaking $GITHUB_TOKEN to Travis logs e.g. if error occurs
-    git fetch --depth=1 upstream gh-pages >/dev/null 2>&1
-    git reset upstream/gh-pages >/dev/null 2>&1
+    git fetch --depth=1 upstream gh-pages 2>/dev/null
+    git reset upstream/gh-pages 2>/dev/null
 else
     git checkout --orphan gh-pages
 fi
 
 # Exit if there are no changes to gh-pages files.
-if git diff --quiet --exit-code; then
+if git diff --quiet --exit-code 2>/dev/null; then
     echo "No changes to GitHub Pages files; exiting."
     exit 0
 fi
 
 git add -A .
 git commit -m "Rebuild pages at ${TRAVIS_COMMIT}"
-git push --quiet upstream HEAD:gh-pages >/dev/null 2>&1
+git push --quiet upstream HEAD:gh-pages 2>/dev/null
