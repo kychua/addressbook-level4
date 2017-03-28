@@ -1,2 +1,2 @@
-= Another Test Document 2
+= Another Test Document
 :last-update-label!:
