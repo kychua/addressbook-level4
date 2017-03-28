@@ -18,17 +18,20 @@ git config user.email "travis@travis-ci.org"
 
 git remote add upstream "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}2.git"
 
+# In commands below, 2>/dev/null discards output to avoid leaking $GITHUB_TOKEN to Travis logs e.g. if error occurs
+
 # Reset to gh-pages branch, or create orphan branch if gh-pages does not exist in remote.
-if git ls-remote --heads upstream gh-pages 2>/dev/null; then
-    # >/dev/null 2>&1 discards output to avoid leaking $GITHUB_TOKEN to Travis logs e.g. if error occurs
+if git ls-remote --exit-code --heads upstream gh-pages 2>/dev/null; then
     git fetch --depth=1 upstream gh-pages 2>/dev/null
     git reset upstream/gh-pages 2>/dev/null
-else
+elif [ $? -eq 2]; then # exit code of git ls-remote is 2 if branch does not exist
     git checkout --orphan gh-pages 2>/dev/null
+else # error occurred
+    exit $?
 fi
 
 # Exit if there are no changes to gh-pages files.
-if git diff --quiet --exit-code 2>/dev/null; then
+if changes=$(git status --porcelain) && [ -z "$changes" ]; then
     echo "No changes to GitHub Pages files; exiting."
     exit 0
 fi
