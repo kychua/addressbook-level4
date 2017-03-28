@@ -1,4 +1,4 @@
-# Contact Us 2
+# Contact Us
 
 * **Bug reports, Suggestions** : Post in our [issue tracker](https://github.com/se-edu/addressbook-level4/issues)
   if you noticed bugs or have suggestions on how to improve.
