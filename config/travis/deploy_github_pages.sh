@@ -16,9 +16,10 @@ git init
 git config user.name "Travis"
 git config user.email "travis@travis-ci.org"
 
-git remote add upstream "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+git config credential.helper "store --file=.git/credentials" 
+echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
 
-# In commands below, 2>/dev/null discards output to avoid leaking $GITHUB_TOKEN to Travis logs e.g. if error occurs
+git remote add upstream "https://github.com/${TRAVIS_REPO_SLUG}.git"
 
 # Reset to gh-pages branch, or create orphan branch if gh-pages does not exist in remote.
 if git ls-remote --exit-code --heads upstream gh-pages; then
