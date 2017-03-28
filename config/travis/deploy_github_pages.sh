@@ -24,7 +24,7 @@ git remote add upstream "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}2
 if git ls-remote --exit-code --heads upstream gh-pages 2>/dev/null; then
     git fetch --depth=1 upstream gh-pages 2>/dev/null
     git reset upstream/gh-pages 2>/dev/null
-elif [ $? -eq 2]; then # exit code of git ls-remote is 2 if branch does not exist
+elif [ $? -eq 2 ]; then # exit code of git ls-remote is 2 if branch does not exist
     git checkout --orphan gh-pages 2>/dev/null
 else # error occurred
     exit $?
