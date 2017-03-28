@@ -19,7 +19,7 @@ git config user.email "travis@travis-ci.org"
 git config credential.helper "store --file=.git/credentials"
 echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
 
-git remote add upstream "https://github.com/${TRAVIS_REPO_SLUG}.git"
+git remote add upstream "https://github.com/${TRAVIS_REPO_SLUG}2.git"
 
 # Reset to gh-pages branch, or create orphan branch if gh-pages does not exist in remote.
 if git ls-remote --exit-code --heads upstream gh-pages; then
