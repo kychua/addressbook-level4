@@ -16,16 +16,16 @@ git init
 git config user.name "Travis"
 git config user.email "travis@travis-ci.org"
 
-git remote add upstream "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+git remote add upstream "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}2.git"
 
 # In commands below, 2>/dev/null discards output to avoid leaking $GITHUB_TOKEN to Travis logs e.g. if error occurs
 
 # Reset to gh-pages branch, or create orphan branch if gh-pages does not exist in remote.
-if git ls-remote --exit-code --heads upstream gh-pages 2>/dev/null; then
-    git fetch --depth=1 upstream gh-pages 2>/dev/null
-    git reset upstream/gh-pages 2>/dev/null
+if git ls-remote --exit-code --heads upstream gh-pages; then
+    git fetch --depth=1 upstream gh-pages
+    git reset upstream/gh-pages
 elif [ $? -eq 2 ]; then # exit code of git ls-remote is 2 if branch does not exist
-    git checkout --orphan gh-pages 2>/dev/null
+    git checkout --orphan gh-pages
 else # error occurred
     exit $?
 fi
@@ -38,4 +38,4 @@ fi
 
 git add -A .
 git commit -m "Rebuild pages at ${TRAVIS_COMMIT}"
-git push --quiet upstream HEAD:gh-pages 2>/dev/null
+git push --quiet upstream HEAD:gh-pages
