@@ -16,7 +16,7 @@ git init
 git config user.name "Travis"
 git config user.email "travis@travis-ci.org"
 
-git remote add upstream "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}2.git"
+git remote add upstream "https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
 
 # In commands below, 2>/dev/null discards output to avoid leaking $GITHUB_TOKEN to Travis logs e.g. if error occurs
 
