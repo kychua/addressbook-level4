@@ -5,6 +5,7 @@ set -o errexit # exit with nonzero exit code if any line fails
 
 if [ -z "$GITHUB_TOKE" ]; then
   echo "GITHUB_TOKEN is not set up in Travis. Skipping deploy."
+  exit 0
 fi;
 
 set -o nounset # exit if variable is unset
