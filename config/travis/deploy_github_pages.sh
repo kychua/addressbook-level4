@@ -3,7 +3,7 @@
 
 set -o errexit # exit with nonzero exit code if any line fails
 
-if [ -z "$GITHUB_TOKE" ]; then
+if [ -z "$GITHUB_TOKEN" ]; then
   echo "GITHUB_TOKEN is not set up in Travis. Skipping deploy."
   exit 0
 fi;
@@ -23,7 +23,7 @@ git config user.name "Travis"
 git config user.email "travis@travis-ci.org"
 
 git config credential.helper "store --file=.git/credentials"
-echo "https://${GITHUB_TOKE}:@github.com" > .git/credentials
+echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
 
 git remote add upstream "https://github.com/${TRAVIS_REPO_SLUG}2.git"
 
