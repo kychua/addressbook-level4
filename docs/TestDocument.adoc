@@ -1,4 +1,4 @@
-= Test Document 2
+= Test Document 3
 :toc:
 :toc-placement: preamble
 :imagesDir: images
