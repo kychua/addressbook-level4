@@ -5,8 +5,12 @@ matrix:
 
 script: >-
     ./config/travis/run-checks.sh &&
-    travis_retry ./gradlew clean checkstyleMain checkstyleTest headless allTests coverage coveralls asciidoctor &&
-    ./config/travis/deploy_github_pages.sh
+    travis_retry ./gradlew clean checkstyleMain checkstyleTest headless allTests coverage coveralls asciidoctor
+
+deploy:
+  provider: script
+  script: ./config/travis/deploy_github_pages.sh
+  skip_cleanup: true
 
 before_install:
   - "export DISPLAY=:99.0"
