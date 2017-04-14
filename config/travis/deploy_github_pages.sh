@@ -3,7 +3,7 @@
 
 set -o errexit # exit with nonzero exit code if any line fails
 
-if [ -z "$GITHUB_TOKE" ]; then
+if [ -z "$GITHUB_TOKEN" ]; then
   echo 'GITHUB_TOKEN is not set up in Travis. Skipping deploy.'
   exit 0
 fi;
